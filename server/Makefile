@@ -1,5 +1,22 @@
-serv: server.c
-	g++ -g -Wall -o $@ $<
+target = serv
+CXX = g++ -Wall
+CFLAGS = 
+obj = server.o polling.o sockinit.o threadpool.o
+lib = -lpthread
 
-clean:
-	@rm -f *.o serv
+.PHONY : all
+all : $(target)
+
+.PHONY : debug
+debug : CFLAGS += -DDEBUG -g
+debug : $(target)
+
+$(target) : $(obj) $(lib)
+	$(CXX) $(CFLAGS) -o $@ $^ $(lib)
+		
+$(obj) : $(obj:.o=.cc)
+	$(CXX) $(CFLAGS) -c -o $@ $(@:.o=.cc) $(lib)
+
+.PHONY : clean
+clean :
+	@rm -f $(target) $(obj)
