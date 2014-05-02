@@ -72,7 +72,7 @@ void *DataManager::receiveData(void *pArgs)
 {
 //	pArgs = (void *)this;
 	dataUnit *du = new dataUnit;
-	int fd = (int)pArgs;
+	int fd = (long)pArgs & 0xFFFFFFFF;
 	int n;
 	du->fd = fd;
 	char buf[MAX_BUF_SIZE];
