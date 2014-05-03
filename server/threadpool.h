@@ -21,12 +21,12 @@ public:
 	~threadpool();
 private:
 	X* x;
+	int m_nSize;
 	static routineFunc routine;
 	pIncomingFunc incoming_routine;
 	pthread_mutex_t m_pt_mutex;
 	pthread_cond_t m_pt_cond;
 	pthread_t *m_pPoolList;
-	int m_nSize;
 	datanode *m_pHead, *m_pTail;
 };
 

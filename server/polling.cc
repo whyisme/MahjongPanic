@@ -61,7 +61,7 @@ int DataManager::polling()
 				}
 			} else {
 			//	do_use_fd(events[n].data.fd);
-				receivepool.insertData((void *)(events[n].data.fd));
+				receivepool.insertData((void *)(long)(events[n].data.fd));
 			}
 		}
 	}

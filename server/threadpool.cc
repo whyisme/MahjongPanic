@@ -2,7 +2,7 @@
 #define THREAD_POOL_CC
 #include "threadpool.h"
 template <class X>
-threadpool<X>::threadpool(int size, X *pThis, pIncomingFunc start_routine) : m_nSize(size), x(pThis), incoming_routine(start_routine), m_pHead(NULL), m_pTail(NULL), m_pt_mutex(PTHREAD_MUTEX_INITIALIZER), m_pt_cond(PTHREAD_COND_INITIALIZER)
+threadpool<X>::threadpool(int size, X *pThis, pIncomingFunc start_routine) : x(pThis), m_nSize(size), incoming_routine(start_routine), m_pt_mutex(PTHREAD_MUTEX_INITIALIZER), m_pt_cond(PTHREAD_COND_INITIALIZER), m_pHead(NULL), m_pTail(NULL) 
 {	
 	if (m_nSize > 0)
 	{

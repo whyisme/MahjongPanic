@@ -1,6 +1,6 @@
 target = serv
 CXX = g++ -Wall
-CFLAGS = 
+CFLAGS = -std=c++11 
 obj = server.o polling.o sockinit.o threadpool.o
 lib = -lpthread
 
